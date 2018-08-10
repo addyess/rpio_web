@@ -14,10 +14,18 @@ def run_forever(hardware):
 
     @app.get('/conditions.html')
     def _():
+        class OutcomeMetaData(object):
+            def __init__(self, name, fields):
+                self.name = name
+                self.fields = fields
+
         class NewFormOptions:
             triggers = ['Active', 'Clear']
             pins = hardware.get_gpio()
-            outcome = ['Assert', 'Email', 'Text', 'Log']
+            outcome = [
+                OutcomeMetaData('Assert', ['Pin Label']),
+                OutcomeMetaData('Log', ['Format Message'])
+            ]
         return template('conditions', conditions=hardware.conditions, new_form=NewFormOptions())
 
     @app.get('/events.html')

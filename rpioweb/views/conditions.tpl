@@ -39,38 +39,39 @@
                 </tr>
                 % end
               </tbody>
-              <tfoot>
-                <tr>
-                  <form>
-                    <th scope="col">{{len(conditions) + 1}}</th>
-                    <th scope="col">
-                     <select class="custom-select">
-                     % for t in new_form.triggers:
-                       <option class="dropdown-item" value="{{t.lower()}}">{{t}}</option>
-                     % end
-                     </select>
-                    </th>
-                    <th scope="col">
-                     <select class="custom-select">
-                     % for p in new_form.pins:
-                       <option class="dropdown-item" value="{{p.ident}}">{{p.label}}</option>
-                     % end
-                     </select>
-                    </th>
-                    <th scope="col">
-                     <select class="custom-select">
-                     % for o in new_form.outcome:
-                       <option class="dropdown-item" value="{{o.lower()}}">{{o}}</option>
-                     % end
-                     </select>
-                    </th>
-                    <th scope="col"></th>
-                  </form>
-                </tr>
-              </tfoot>
             </table>
         </div>
+        <form>
+          <div class="form-group row">
+            <label class="col-sm-1" for="Trigger">Trigger</label>
+            <select class="form-control col-sm-3 custom-select">
+              % for t in new_form.triggers:
+              <option class="dropdown-item" value="{{t.lower()}}">{{t}}</option>
+              % end
+            </select>
+            <label class="col-sm-1" for="Pin">Pin</label>
+            <select class="form-control col-sm-3 custom-select">
+              % for p in new_form.pins:
+              <option class="dropdown-item" value="{{p.ident}}">{{p.label}}</option>
+              % end
+            </select>
+            <label class="col-sm-1" for="Outcome">Outcome</label>
+            <select class="form-control col-sm-3 custom-select">
+            % for o in new_form.outcome:
+              <option class="dropdown-item" value="{{o.name}}">{{o.name}}</option>
+            % end
+            </select>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-1" for="Meta">Meta</label>
+            <input type="text" class="form-control col-sm-11" ></input>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-11"></div>
+            <input type="submit" class="form-control col-sm-1 btn btn-primary" value="Add"></input>
+          </div>
+        </form>
+      </div>
     </div>
-
 </body>
 </html>
